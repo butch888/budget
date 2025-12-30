@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-base antialiased;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background-attachment: fixed;
+  }
+
+  /* Стили для скроллбара */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-600 transition-colors duration-200 hover:bg-slate-500;
+  }
+
+  td {
+    @apply text-white/90 capitalize;
+  }
+
+  thead td {
+    @apply font-semibold text-white;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-200 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:opacity-50 disabled:hover:bg-gray-600;
+  }
+
+  .input {
+    @apply rounded-xl border border-slate-600 bg-slate-700/50 p-3 text-white transition-all duration-200 outline-none placeholder:text-gray-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500;
+  }
+
+  .app-container {
+    @apply mx-auto max-w-[1600px] px-6;
+  }
+
+  /* Стили для кастомного селекта */
+  .select-custom {
+    @apply cursor-pointer rounded-xl border border-slate-600 bg-slate-700/50 p-3 text-white transition-all duration-200 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500;
+  }
+
+  /* Стили для карточек */
+  .card {
+    @apply rounded-3xl border border-slate-700/50 bg-slate-800/50 p-6 shadow-2xl shadow-black/20;
+  }
+
+  /* Стили для статистических карточек */
+  .stat-card {
+    @apply rounded-2xl border border-slate-600/50 bg-gradient-to-br from-slate-700/50 to-slate-800/50 p-4 text-center transition-transform duration-200 hover:scale-105;
+  }
+}
+
+@layer utilities {
+  .btn-red {
+    @apply border border-red-500/30 bg-red-500/10 text-red-300 hover:border-red-400/40 hover:bg-red-500/20 hover:text-red-200;
+  }
+
+  .btn-green {
+    @apply border border-green-500/30 bg-green-600 text-white hover:bg-green-500;
+  }
+
+  .btn-blue {
+    @apply border border-blue-500/30 bg-blue-600 text-white hover:bg-blue-500;
+  }
+
+  .btn-cyan {
+    @apply border border-cyan-500/30 bg-cyan-600 text-white hover:bg-cyan-500;
+  }
+
+  /* Градиентный текст */
+  .text-gradient {
+    @apply bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent;
+  }
+
+  /* Стеклянный эффект */
+  .glass {
+    @apply border border-slate-700/50 bg-slate-800/30 backdrop-blur-md;
+  }
+
+  /* Анимации */
+  .animate-ping-slow {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+
+  /* Ховер эффекты */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-200 hover:shadow-lg hover:shadow-cyan-500/20;
+  }
+}
+
+/* Кастомные анимации */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 100%;
+}
+
+/* Темная тема по умолчанию */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* Фокус состояния для доступности */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-cyan-500;
+}
+
+/* Стили для состояний загрузки */
+.loading {
+  @apply animate-pulse rounded bg-slate-700;
+}
+
+/* Стили для уведомлений и статусов */
+.status-success {
+  @apply border border-green-500/30 bg-green-500/20 text-green-300;
+}
+
+.status-error {
+  @apply border border-red-500/30 bg-red-500/20 text-red-300;
+}
+
+.status-warning {
+  @apply border border-yellow-500/30 bg-yellow-500/20 text-yellow-300;
+}
+
+.status-info {
+  @apply border border-cyan-500/30 bg-cyan-500/20 text-cyan-300;
+}
