@@ -3,7 +3,8 @@ import axios from "axios";
 import { getTokenFromLocalstorage } from "../helpers/localstarage.helper";
 
 export const instance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  // baseURL: "http://localhost:5000/",
+  baseURL: "https://budget-back-vercel.vercel.app",
 });
 
 // Добавляем интерцептор для каждого запроса
