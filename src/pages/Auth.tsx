@@ -13,6 +13,7 @@ const Auth: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState<string>("");
   const dispath = useAppDispatch();
   const navigate = useNavigate();
   const isAuth = useAuth();
@@ -24,9 +25,21 @@ const Auth: FC = () => {
     }
   }, [isAuth, navigate]);
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^@]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
   const authHandler = async (e: React.FormEvent) => {
     try {
       e.preventDefault();
+
+      if (!validateEmail(email)) {
+        setEmailError("Invalid email address");
+        return;
+      }
+
+      setEmailError("");
       setIsLoading(true);
 
       if (isLogin) {
@@ -103,10 +116,18 @@ const Auth: FC = () => {
                 type="email"
                 value={email}
                 placeholder="Enter your email"
-                className="w-full rounded-xl border border-slate-600 bg-slate-700/50 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-all duration-200 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/50 focus:outline-none"
-                onChange={(e) => setEmail(e.target.value)}
+                className={`w-full rounded-xl border px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-all duration-200 focus:outline-none ${
+                  emailError
+                    ? "border-red-500 bg-red-900/20 focus:border-red-500 focus:ring-2 focus:ring-red-500/50"
+                    : "border-slate-600 bg-slate-700/50 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/50"
+                }`}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (emailError) setEmailError("");
+                }}
                 required
               />
+              {emailError && <p className="mt-1 text-sm text-red-400">{emailError}</p>}
             </div>
 
             <div>
