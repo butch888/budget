@@ -86,23 +86,15 @@ const Transactions: FC = () => {
       <div className="grid grid-cols-1 items-start gap-6 xl:grid-cols-3">
         {/* Add Transaction Form */}
         <div className="xl:col-span-2">
-          <div className="rounded-3xl border border-slate-700/50 bg-slate-800/50 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
-            <h2 className="mb-6 flex items-center gap-2 text-xl font-semibold text-white">
-              <svg className="h-5 w-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-              Add New Transaction
-            </h2>
-            <TransactionsForm />
-          </div>
+          <TransactionsForm />
         </div>
 
         {/* Statistic block */}
         <div className="space-y-6">
           {/* Total Statistics */}
           <div className="rounded-3xl border border-slate-700/50 bg-slate-800/50 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
-            <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold text-white">
-              <svg className="h-5 w-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <h2 className="mb-4 flex items-center gap-2 text-lg sm:text-xl font-semibold text-white">
+              <svg className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -110,10 +102,10 @@ const Transactions: FC = () => {
                   d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 />
               </svg>
-              Financial Overview
+              <span className="whitespace-nowrap">Financial Overview</span>
             </h2>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex min-h-[120px] flex-col justify-center rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 p-4 text-center transition-transform duration-200 hover:scale-105">
                 <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20">
                   <svg className="h-5 w-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,8 +157,8 @@ const Transactions: FC = () => {
 
           {/* Chart */}
           <div className="rounded-3xl border border-slate-700/50 bg-slate-800/50 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
-            <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold text-white">
-              <svg className="h-5 w-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <h2 className="mb-4 flex items-center gap-2 text-lg sm:text-xl font-semibold text-white">
+              <svg className="h-4 w-4 sm:h-5 sm:w-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -180,7 +172,7 @@ const Transactions: FC = () => {
                   d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
                 />
               </svg>
-              Income vs Expense
+              <span className="whitespace-nowrap">Income vs Expense</span>
             </h2>
             <Chart totalIncome={totalIncome} totalExpense={totalExpense} />
           </div>
